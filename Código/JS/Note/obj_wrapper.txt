@@ -1,0 +1,26 @@
+Contudo, as strings não são objetos. Então, por que elas têm propriedades? Quando você tenta se
+referir a uma propriedade de uma string s , JavaScript converte o valor da string em um objeto como
+se estivesse chamando new String(s) . Esse objeto herda (consulte a Seção 6.2.2) métodos da string e
+é utilizado para solucionar a referência da propriedade. Uma vez solucionada a propriedade, o objeto
+recentemente criado é descartado. (As implementações não são obrigadas a criar e descartar esse
+objeto transitório – contudo, devem se comportar como se fossem.)
+Números e valores booleanos têm métodos pelo mesmo motivo que as strings: um objeto tempo-
+rário é criado com a construtora Number() ou Boolean() e o método é solucionado por meio desse
+objeto temporário. Não existem objetos empacotadores (wrapper) para os valores null e undefined :
+qualquer tentativa de acessar uma propriedade de um desses valores causa um TypeError .
+Considere o código a seguir e pense no que acontece quando ele é executado:
+
+var s = "test";
+s.len = 4;
+var t = s.len;
+// Começa com um valor de string.
+// Configura uma propriedade nele.
+// Agora consulta a propriedade.
+Quando esse código é executado, o valor de t é undefined . A segunda linha de código cria um objeto
+String temporário, configura sua propriedade len como 4 e, em seguida, descarta esse objeto. A ter-
+ceira linha cria um novo objeto String a partir do valor da string original (não modificado) e, então,
+tenta ler a propriedade len . Essa propriedade não existe e a expressão é avaliada como undefined . Esse
+código demonstra que strings, números e valores booleanos se comportam como objetos quando se
+tenta ler o valor de uma propriedade (ou método) deles. Mas se você tenta definir o valor de uma
+propriedade, essa tentativa é ignorada silenciosamente: a alteração é feita em um objeto temporário
+e não persiste.

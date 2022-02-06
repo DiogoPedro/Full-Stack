@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    background-color: #D3D3D3;
+    font-family:sans-serif;
+    height: 100%;
+}
+.all{
+    background-color: white;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+}
+header > h1{
+    color: black;
+    text-align-last: center;
+    padding: 15px 0px 15px 0px;
+    font-size: 32px;
+}
+div > p{
+    text-align: center;
+    padding-top: 30px;
+    font-size: 32px;
+}

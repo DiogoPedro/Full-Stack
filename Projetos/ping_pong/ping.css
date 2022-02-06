@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    background-color: #D3D3D3;
+    font-family:'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    height: 100%;
+}
+.all{
+    background-color: white;
+    margin: auto;
+    width: 900px;
+    height: 650px;
+}
+header > h1{
+    color: black;
+    text-align-last: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    font-size: 32px;
+}
+.map{
+    margin: auto;
+    margin-top: 12%;
+    overflow: auto;
+    width: 550px;
+    height: 380px;
+    background-color: black;
+}
+div > #player1{
+    position: relative;
+    top: 20px;
+    left: 25px;
+    width: 20px;
+    height: 50px;
+    background-color:blue;
+}

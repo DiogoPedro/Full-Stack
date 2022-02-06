@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h1>Formulario de Cadastro</h1>
+    <form id="forms1">
+        <label for="fname">Full Name:</label>
+        <input type="text" id="fname" value="Diogo Pedro">
+        <label for="fpassoword">Password:</label>
+        <input type="password" id="fpassoword" value="40028922">
+        <label for="femail">Email:</label>
+        <input type="email" id="femail" value="diogo@gmail.com">
+        
+        <input type="submit" id="fsubmit" value="Enviar">
+        <input type="reset" id="freset" value="Reset">
+    </form>
+    <h2>Dados digitados do formulario</h2>
+    <div>
+        <p id="name">Nome do formulario: </p>
+        <p id="password">Senha do formulario: </p>
+        <p id="email">Email do formulario: </p>
+    </div>
+    <script>
+        window.onload = init;
+    
+        function init(){
+            let fdemo = document.getElementById('forms1');
+            cleanForms(fdemo);
+            fdemo.addEventListener('submit', newData);
+        }
+
+        function newData(evt){
+            //Option 1;
+            let name = document.getElementById('name');
+            let password = document.getElementById('password');
+            let email = document.getElementById('email');
+
+            name.innerHTML = "Nome do formulario: " + evt.currentTarget.elements[0].value;
+            password.innerHTML = "Senha do formulario: " + evt.currentTarget.elements[1].value;
+            email.innerHTML = "Email do formulario: " + evt.currentTarget.elements[2].value;
+
+            //Option 2;
+            // let elementsP = document.getElementsByTagName('p');
+
+            // elementsP[0].innerHTML = "Nome do formulario: "  + evt.currentTarget.elements[0].value;
+            // elementsP[1].innerHTML = "Senha do formulario: " + evt.currentTarget.elements[1].value;
+            // elementsP[2].innerHTML = "Email do formulario: " + evt.currentTarget.elements[2].value;
+
+
+            evt.currentTarget.elements[3].disabled = true;
+            event.preventDefault();
+        }
+
+        function cleanForms(formulario){
+            qdeControles = formulario.elements.length;
+            for (var i=0; i<qdeControles; i++) {
+                var controle = formulario.elements[i];
+                    if (controle.defaultValue && controle.type != 'submit' && controle.type != 'reset') {
+                        controle.onfocus = function() { //onfocus eh um evento quando se clica em determinado input eh ativado;
+                            if(this.defaultValue && this.value == this.defaultValue){
+                                this.value = "";
+                            }
+                        }
+                    }
+                controle.onblur = function() {
+                    (this.value == "") ? this.value = this.defaultValue : "";
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

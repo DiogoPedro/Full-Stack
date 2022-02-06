@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Box model CSS</title>
+		<meta charset="utf-8">
+		<style rel="stylesheet">
+			*, *:before, *:after {
+    			-webkit-box-sizing: border-box; /**/
+       			-moz-box-sizing: border-box;
+            	box-sizing: border-box;
+			}
+
+			body {margin:0; padding:0; font-size:20px;}
+			p {
+				width: 400px; /*Tamanho Conteudo*/
+				text-align: justify;
+				line-height: 1;
+				background: #f6f6f6; /*Background do conteudo e seu padding*/
+				
+				margin: 20px 80px 100px 40px; /*Definindo a posicao da margem*/
+				
+				border: solid rgb(87, 68, 255); /*Definindo o background da borda*/
+				border-width: thick; /*Posicao da borda*/
+				border-style: groove;
+
+				padding: 35px 50px 20px 0; /*Posicao do enchimento*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi eleifend, purus quis laoreet faucibus, ante augue malesuada mi, id rhoncus augue lorem eget elit.</p>
+		</div>
+	</body>
+</html>

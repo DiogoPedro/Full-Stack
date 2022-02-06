@@ -1,0 +1,48 @@
+1. Modo restrito:
+    O modo restrito é uma variante de javaScript, não sendo apenas um subconjunto, ela traz um comportamento
+    que não permite "erros silenciosos" que o modo não restrito permitiria. Além de não permitir instruções 
+    que prejudiquem a otimização do compilador. O modo restrito e não restrito podem conviver lado a lado.
+    Vale salientar que o modo restrito proibi a utilização de sintaxes que serão incorporado no futuro pela
+    linguagem.
+
+2. Objetos hospedeiros: ******
+    Um objeto hospedeiro é um objeto definido pelo ambiente hospedeiro (como um navegador Web) dentro 
+    do qual o interpretador JavaScript está incorporado. Os objetos HTML-Element, que representam a 
+    estrutura de uma página Web em JavaScript do lado do cliente, são objetos hospedeiros. 
+    Os objetos hospedeiros também podem ser objetos nativos, como quando o ambiente hospedeiro 
+    define métodos que são objetos Function normais de JavaScript.
+
+3. Lvalues: //pronuncia valuis
+    O que são expressões Lvalues ?
+        R: Expressoes que aparecem no lado esquerdo a uma expressão de atribuição;
+
+4. eval:
+    Nada mais é do que uma função, que recebe como parametro uma string, ele tenta traduzir essa string como
+    código fonte e apartir dela realizar as instruções que estava escrita nesse código fonte.
+    Se o código fonte tiver uma instrução de atribuição ou declaração, o eval faz essa atribuição, se estiver 
+    num escopo local, realiza a atribuição local, ou escopo global a atribuição será global.
+    No modo restrito ou se a string que o eval recebe contiver "use strict", novas restrições serão adotas.
+    Como a impossibilidade de declaração de variável ou funções no escopo local, eval é tratada como um operador
+    e passa a ser uma palavra reservada, impossibilitando sobreescrever a eval, com outro nome.
+
+5. script:
+    Um conjunto de código para a realização de uma tarefa. ex: contar visitas em um website;
+
+6. Objeto pertence a classe 'Error':
+    Descobrir métodos e funcionamento;
+
+7. Objeto RegExp:
+    Descobrir métodos e funcionamento;
+
+8. hasOwnProperty() , propertyIsEnumerable() e isPrototypeOf():
+9. Metodo .toString();
+10. Object.key();
+
+11. Conceito de uma função aninhada e closure:
+    Você pode aninhar uma função dentro de outra. A função aninhada (interna) é acessível apenas para a função que a 
+contém(exterior). Isso constitui também uma closure. Uma closure é uma expressão (tipicamente uma função) que pode ter variáveis livres em conjunto com um ambiente que conecta estas variáveis (que "fecha" a expressão).
+
+    Uma vez que uma função aninhada é uma closure, isto significa que uma função aninhada pode "herdar" os argumentos e
+variáveis de sua função de contenção. Em outras palavras, a função interior contém o escopo da função exterior.
+
+12. Difenreça entre escopo léxico e dinamico.

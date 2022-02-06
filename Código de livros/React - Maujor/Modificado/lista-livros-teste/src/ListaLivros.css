@@ -1,0 +1,47 @@
+body {
+  font: 18px sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+#root {
+  width: 300px;
+  margin: 0 auto;
+}
+input {
+  width: 100%;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+button {
+  font-size: inherit;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #0099da;
+  color: #fff;
+  cursor: pointer;
+}
+button.remover {
+  font-size: 14px;
+  width: 30px;
+  margin: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  font-size: 30px;
+}

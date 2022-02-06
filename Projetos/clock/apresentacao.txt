@@ -1,0 +1,1 @@
+É uma atividade, para utilizar a habilidade criar um elemento, atributo, em js, realizar uma busca na arvore DOM e inserir em um nó especificado.

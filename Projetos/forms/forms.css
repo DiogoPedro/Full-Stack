@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    background-color: #D3D3D3;
+    font-family:sans-serif;
+    height: 100%;
+}
+.all{
+    background-color: white;
+    margin: auto;
+    padding-top: 2%;
+    width: 75%;
+    height: 100%;
+}
+h1 {
+    text-align: center;
+    padding-bottom: 2%;
+}
+.formsData{
+    font-size: 16px;
+    text-align: center;
+}
+.contentData{
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+h2 {
+    text-align: center;
+    padding-top: 4%;
+    padding-bottom: 2.5%;
+}
+p {
+    border: 1px solid black;
+    border-bottom: none;
+    margin-left: 15%;
+    padding-left: 3%;
+    height: 20px;
+    width: 70%;
+}
+#statusM {border-bottom: 1px solid black;}

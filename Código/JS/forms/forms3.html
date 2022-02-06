@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h1>Formulario de Cadastro</h1>
+    <form id="forms1">
+        <label for="fname">Full Name:</label>
+        <input type="text" id="fname" value="Diogo Pedro">
+        <label for="fpassoword">Password:</label>
+        <input type="password" id="fpassoword" value="40028922">
+        <label for="femail">Email:</label>
+        <input type="email" id="femail" value="diogo@gmail.com">
+        
+        <h3>Marital Status</h3>
+        <select id="maritalStatus" >
+            <option value="single" selected="select">Single</option>
+            <option value="Divorced">Divorced</option>
+            <option value="married">Married</option>
+        </select>
+
+        <input type="submit" id="fsubmit" value="Enviar">
+        <input type="reset" id="freset" value="Reset">
+    </form>
+    <h2>Dados digitados do formulario</h2>
+    <div>
+        <p id="name">Nome do formulario: </p>
+        <p id="password">Senha do formulario: </p>
+        <p id="email">Email do formulario: </p>
+        <p id="statusM">Status is: </p>
+    </div>
+    <script>
+        window.onload = init;
+    
+        function init(){
+            let fdemo = document.getElementById("forms1");
+            cleanForms(fdemo);
+            fdemo.addEventListener("submit", validation);
+        }
+
+        function cleanForms(formulario){
+            let qdeControles = formulario.elements.length;
+            for(let i=0; i<qdeControles; i++) {
+                let controle = formulario.elements[i];
+                    if(controle.defaultValue && controle.type != "submit" && controle.type != "reset") {
+                        controle.onfocus = function() { //onfocus eh um evento quando se clica em determinado input eh ativado;
+                            if(this.defaultValue && this.value == this.defaultValue){
+                                this.value = "";
+                            }
+                        }
+                    }
+                controle.onblur = function() {
+                    (this.value == "") ? this.value = this.defaultValue : "";
+                }
+            }
+        }
+
+        function validation(evt){
+            event.preventDefault();
+            let qdeControles = evt.currentTarget.length;
+            let elementsP = document.getElementsByTagName("p");
+            let accept = true;
+            for(let i=0; i<qdeControles; i++){
+                let controle = evt.currentTarget.elements[i];
+                if(controle.defaultValue == controle.value && controle.type != "submit" && controle.type != "reset" || controle.value.length < 1){
+                    //alert("Falta de dados no formulário na " + (i+1) + " parte, por favor, preencha.");
+                    accept = false;
+                }
+            }
+            (accept) ? newData(evt) : alert("Preencha os dados do formulario!");
+        }
+
+        function newData(evt){
+            //Option 1;
+            let name = document.getElementById("name");
+            let password = document.getElementById("password");
+            let email = document.getElementById("email");
+            let status = document.getElementById("statusM");
+
+            name.innerHTML = "Nome do formulario: " + evt.currentTarget.elements[0].value;
+            password.innerHTML = "Senha do formulario: " + evt.currentTarget.elements[1].value;
+            email.innerHTML = "Email do formulario: " + evt.currentTarget.elements[2].value;
+            status.innerHTML = "Voce selecionou a seguinte opcao: " +  evt.currentTarget.elements[3].value;
+
+            //Option 2;
+            // let elementsP = document.getElementsByTagName("p");
+
+            // elementsP[0].innerHTML = "Nome do formulario: "  + evt.currentTarget.elements[0].value;
+            // elementsP[1].innerHTML = "Senha do formulario: " + evt.currentTarget.elements[1].value;
+            // elementsP[2].innerHTML = "Email do formulario: " + evt.currentTarget.elements[2].value;
+
+            document.getElementById("fsubmit").disabled = true;
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Criação de sites com HTML e CSS</title>
+    <meta charset="utf-8">
+    <!--[if Kt IE 9]
+        <script src=""/home/pedro/Full Stack/CSS & HTML/Scripts/html5shiv-master/src/html5shiv.js""><\script>
+        <![endif]
+    -->
+    <link rel="stylesheet" href="/home/pedro/Full Stack/CSS & HTML/html & Css/CSS/HTMLCSS/normalize.css"></link> <!-- CSS Reset de Nicolas Gallagher -->
+    <style rel="stylesheet">
+        html { box-sizing: border-box; }
+        *, *:before, *:after {  -webkit-box-sizing: border-box;
+                                -moz-box-sizing: border-box;
+                                box-sizing: border-box; 
+        } 
+        body {
+            font: 18px/1.4 arial, sans-serif;
+            background: #ddd;
+            color: #333;
+        }
+        .tudo {
+            width: 100%; /*Vai usar uma porcentagem da largura da tela do navegador*/
+            max-width: 1280px; /*Vai restringir a resolucao da largura maxima*/
+            margin: 0 auto; /*Vai centralizar todo conteudo do box que for de tudo*/
+            background: #fff;
+        }
+        .topo { width: 100%; }
+        .topo h1 { font-size: 36px; }
+        .topo h2 { font-size: 27px;}
+    </style>
+</head>
+<body class="home">
+    <div class="tudo">
+        <header class = "topo">
+            <hgroup>
+                <h1><a href="/">Site de criação</a></h1>
+                <h2>Site destinado a divulgar o trabalho de Diogo na criação de sites</h2>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a class="corrente" href="home.html">home</a></li>
+                    <li><a href="portofolio.html">portofólio</a></li>
+                    <li><a href="artigos-html.html">artigos HTML</a></li>
+                    <li><a href="artigos-css.html">artigos CSS</a></li>
+                    <li><a href="contato.html">contato</a></li>
+                    <div class="clear"></div>
+                </ul>
+            </nav>
+        </header>
+            <!-- mais conteudo -->
+        <footer class="rodape">
+            <!-- conteudo do rodape do site-->
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font: 162.5% Arial, Sans-serif;
+}
+
+p {
+    width: 500px; /*Comentarios*/
+    font-family: 'PT Sans Narrow';
+    text-align: justify;
+    line-height:1;
+    background-image: url(https://i.pinimg.com/564x/71/ca/07/71ca07d99f84421601f135494224d022.jpg);
+    /*margin: 0px 40px 25px 50px;*/
+    /*border: solid rgb(216, 17, 76);*/
+    border-style: solid ridge double inset;
+    /*border-color: red yellow black cyan; */
+    border-color: hsl(216, 53%, 51%);
+    border-width: 10px 30px 10px 30px;
+    padding: 400px;
+    /* http://kwz.me/g7 */
+}

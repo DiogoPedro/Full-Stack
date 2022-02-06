@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <title>Forms with JS</title>
+    <script type="text/javascript" src="forms.js"></script>
+    <link rel="stylesheet" type="text/css" href="forms.css" media="all">
+</head>
+<body>
+    <div class="all">
+        <h1>Formulário de Cadastro</h1>
+        <div class="formsData">
+            <form id="forms1">
+                <label for="fname">Full Name:</label>
+                <input type="text" id="fname" value="Diogo Pedro">
+                <label for="fpassoword">Password:</label>
+                <input type="password" id="fpassoword" value="40028922">
+                <label for="femail">Email:</label>
+                <input type="email" id="femail" value="diogo@gmail.com">
+                
+                <label>Marital Status</label>
+                <select id="maritalStatus" >
+                    <option value="single" selected="select">Single</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="married">Married</option>
+                </select>
+
+                <input type="submit" id="fsubmit" value="Enviar">
+                <input type="reset" id="freset" value="Reset">
+            </form>
+        </div>
+        <div class="contentData">
+            <h2>Dados digitados do formulario</h2>
+            <p id="name">Nome do formulario: </p>
+            <p id="password">Senha do formulario: </p>
+            <p id="email">Email do formulario: </p>
+            <p id="statusM">Status is: </p>
+        </div>
+    </div>
+</body>
+</html>

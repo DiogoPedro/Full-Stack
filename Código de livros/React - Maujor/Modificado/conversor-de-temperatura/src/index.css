@@ -1,0 +1,129 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  background: #f3f3f3;
+  margin: 10px 5px;
+  font: 16px sans-serif;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+}
+.temperatureConverter {
+  width: 100%;
+  min-width: 400px;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #90c1f5;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px 0px #444;
+}
+.titulo {
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background: #2295f3;
+  color: #fff;
+  border: 1px solid#fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.areaTeclas {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  grid-template-rows: repeat(5, 50px);
+  grid-gap: 5px;
+}
+select {
+  background: none;
+  color: #333;
+  font-size: 18px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  height: 40px;
+  width: 25%;
+  margin-left: 3%;
+  vertical-align: top;
+}
+button[disabled="true"] {
+  background: #dddddd;
+}
+option {
+  color: #000;
+}
+#converter {
+  width: 98%;
+  height: 45px;
+  font-size: 20px;
+  margin-top: 38px;
+  border: 1px solid#fff;
+  border-radius: 8px;
+  background: #2295f3;
+  color: #fff;
+}
+#converter:hover {
+  cursor: pointer;
+  background: #2a0ac9;
+}
+.tecla {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #333;
+  font-size: 20px;
+  border: 1px solid #999;
+  border-radius: 8px;
+}
+.tecla:hover {
+  cursor: pointer;
+}
+.reset {
+  grid-area: 5/2/5/4;
+  text-align: center;
+}
+.limpa {
+  background: center url(/backspace.svg) no-repeat;
+  background-color: #fff;
+}
+#user-temp,
+#celsius-temp,
+#fahrenheit-temp,
+#kelvin-temp {
+  display: inline-block;
+  width: 70%;
+  height: 40px;
+  background: transparent;
+  color: #333;
+  text-align: right;
+  padding-right: 5px;
+  border: 1px solid;
+  border-color: transparent transparent #ddd transparent;
+}
+#user-temp {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+#celsius-temp,
+#fahrenheit-temp,
+#kelvin-temp {
+  color: #2a0ac9;
+  font-size: 30px;
+  line-height: 40px;
+}
+.result + span {
+  font-size: 25px;
+  color: #2a0ac9;
+}
+footer {
+  margin-top: 10px;
+  text-align: center;
+}

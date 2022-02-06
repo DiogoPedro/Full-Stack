@@ -1,0 +1,1 @@
+Aqui ficam os códigos de teste, informações sobre funcionalidades, exemplos de código, para me lembrar como algum recurso funciona e se comporta, alguma informação que achei interessante a ser lembrado.

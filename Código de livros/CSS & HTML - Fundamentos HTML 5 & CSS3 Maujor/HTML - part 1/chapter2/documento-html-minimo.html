@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Minha página web</title>
+    <meta charset="utf-8">
+</head>
+<script type="text/javascript">
+    
+    window.onload = function() {
+        var father = document.getElementsByTagName("div")[0];
+        var three = document.getElementsByTagName("span")[2];
+        var first = document.getElementsByTagName("span")[0];
+        var span4 = document.createElement("span");
+        span4.innerHTML = "Quarto Spam";
+        
+        try {
+            var teste = father.insertBefore(span4, first);
+        } catch(e) {
+            alert(e);
+        }
+    }
+
+
+</script>
+<body>
+    <div>
+        <span>Primeiro spam</span>
+        <span>Segundo spam</span>
+        <span>Terceiro spam</span>
+    </div>
+</body>
+</html>
