@@ -9,31 +9,59 @@ html, body{
     height: 100%;
 }
 .all{
+    display: grid;
     background-color: white;
     margin: auto;
-    width: 900px;
-    height: 650px;
+    width: 1200px;
+    height: 720px;
 }
 header > h1{
     color: black;
     text-align-last: center;
     padding-top: 20px;
     padding-bottom: 15px;
-    font-size: 32px;
+    font-size: 38px;
 }
 .map{
     margin: auto;
-    margin-top: 12%;
-    overflow: auto;
-    width: 550px;
-    height: 380px;
+    margin-top: 2%;
+    width: 900px;
+    height: 500px;
+    border-radius: 2%;
     background-color: black;
 }
 div > #player1{
-    position: relative;
-    top: 20px;
-    left: 25px;
+    position: absolute;
+    top: 325px;
+    left: 350px;
     width: 20px;
-    height: 50px;
+    height: 85px;
+    border-radius: 8%;
     background-color:blue;
+}
+div > #player2{
+    position: absolute;
+    top: 325px;
+    left: 1170px;
+    width: 20px;
+    height: 85px;
+    border-radius: 8%;
+    background-color:blue;
+}
+div > #square{
+    position: relative;
+    top: 220px;
+    left: 442px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: red;
+}
+#initButton{
+    margin-left: 47%;
+    font-size: 18px;
+    text-align: center;
+    width: 85px;
+    height: 45px;
+    border-radius: 10%;
 }
