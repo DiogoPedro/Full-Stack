@@ -3,8 +3,8 @@
     padding: 0;
 }
 html, body{
+    font-family: "Audiowide", sans-serif;
     background-color: #D3D3D3;
-    font-family:'Times New Roman', Times, serif;
     box-sizing: border-box;
     height: 100%;
 }
@@ -32,7 +32,7 @@ header > h1{
 }
 div > #player1{
     position: absolute;
-    top: 325px;
+    top: 310px;
     left: 350px;
     width: 20px;
     height: 85px;
@@ -41,7 +41,7 @@ div > #player1{
 }
 div > #player2{
     position: absolute;
-    top: 325px;
+    top: 310px;
     left: 1170px;
     width: 20px;
     height: 85px;

@@ -1,0 +1,9 @@
+O json Schema é uma ferramenta responsável por fazer a validação do seu arquivo json, desse modo, podemos diminuir a quantidade de erros ou propagá-los e informar pelo próprio front end(e também deve ser implementado no back também) que o arquivo não está conforme o esperado.
+
+O json Schema responde três perguntas:
+
+1. Os tipos de dados dos valores estão corretos?
+2. Essas informações incluem dados obrigatórios?
+3. Os valores estão no formato exigido?
+
+O Schema, pode trabalhar com expressões regulares, condicionais e muito mais.
