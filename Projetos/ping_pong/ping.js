@@ -14,7 +14,7 @@ function init() {
     
     //Direction and control
     let game, frames, control = false;
-    let direction=0, shift = 4, xDirectionSquare, yDirectionSquare;
+    let direction=0, shift = 3, xDirectionSquare, yDirectionSquare;
     
     //Data in the game
     let [playerHeight, playerWidth] = [85, 20];
@@ -40,13 +40,13 @@ function init() {
             control = true;
 
             directionSquareRandom();
-            movementSquare();
             gameRun();
         }
     };
     function gameRun(){
         if(control){
             movementP1();
+            movementSquare();
         }
         frames = requestAnimationFrame(gameRun);
     };
@@ -76,18 +76,18 @@ function init() {
         elPlayer1.style.top = yPlayer1 + "px";
     };
     function movementSquare(){
-        //Condition contour
-        if(ySquare <= 130 || ySquare + squareSide >= mapHeight + 129){
+        //Condition contour usign position relative, let's do it comparations in use;
+        if(ySquare <= 0 || ySquare >= mapHeight - squareSide){
             yDirectionSquare *= -1;
         }
-        if(xSquare <= 1200 || xSquare + squareSide >= mapWidth + 1200){
+        if(xSquare <= 0 || xSquare + squareSide >= mapWidth ){
             xDirectionSquare *= -1;
         }
-        xSquare += xDirectionSquare * 1;
-        ySquare += yDirectionSquare * 1;
+        xSquare += xDirectionSquare * shift;
+        ySquare += yDirectionSquare * shift;
 
-        elSquare.style.top = xSquare + "px";
-        elSquare.style.left = ySquare + "px";
+        elSquare.style.left = xSquare + "px";
+        elSquare.style.top = ySquare + "px";
     }
     function directionSquareRandom(){
         //Direction Square
@@ -96,7 +96,6 @@ function init() {
         } else {
             xDirectionSquare = -1;
         };
-
         //I need two random, one for cada direction.
         if(Math.random() < 0.5){
             yDirectionSquare = 1;
