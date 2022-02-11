@@ -5,6 +5,7 @@ function init() {
     let elPlayer1 = document.getElementById("player1");
     let elPlayer2 = document.getElementById("player2");
     let elSquare = document.getElementById("square");
+    // let elBody = document.getElementById("bodyAll");
     
     //Position in the game in coordinates;
     let xPlayer1, yPlayer1;
@@ -13,11 +14,12 @@ function init() {
     
     //Direction and control
     let game, frames, control = false;
-    let direction=0, shift = 4;
+    let direction=0, shift = 4, xDirectionSquare, yDirectionSquare;
     
     //Data in the game
     let [playerHeight, playerWidth] = [85, 20];
     let [mapHeight, mapWidth, squareSide] = [500, 900, 20];
+    // let bidyWidth = elBody.getBoundingClientRect().width;
 
     //Events about the game;
     btnStart.addEventListener("click", startGame);
@@ -36,6 +38,9 @@ function init() {
 
             //Game initialized;
             control = true;
+
+            directionSquareRandom();
+            movementSquare();
             gameRun();
         }
     };
@@ -46,9 +51,9 @@ function init() {
         frames = requestAnimationFrame(gameRun);
     };
     function keyPressDown(evt){
-        if(evt.keyCode == 87){
+        if(evt.keyCode == 87){ // 87 == 'w'
             direction = -1; //Negative decrement y, up my div
-        } else if(evt.keyCode == 83){
+        } else if(evt.keyCode == 83){ // 83 =='s'
             direction = 1; //Negative increment y, down my div
         }
     };
@@ -69,5 +74,34 @@ function init() {
         }
         //CSS Absolute modify
         elPlayer1.style.top = yPlayer1 + "px";
+    };
+    function movementSquare(){
+        //Condition contour
+        if(ySquare <= 130 || ySquare + squareSide >= mapHeight + 129){
+            yDirectionSquare *= -1;
+        }
+        if(xSquare <= 1200 || xSquare + squareSide >= mapWidth + 1200){
+            xDirectionSquare *= -1;
+        }
+        xSquare += xDirectionSquare * 1;
+        ySquare += yDirectionSquare * 1;
+
+        elSquare.style.top = xSquare + "px";
+        elSquare.style.left = ySquare + "px";
     }
+    function directionSquareRandom(){
+        //Direction Square
+        if(Math.random() < 0.5){
+            xDirectionSquare = 1;
+        } else {
+            xDirectionSquare = -1;
+        };
+
+        //I need two random, one for cada direction.
+        if(Math.random() < 0.5){
+            yDirectionSquare = 1;
+        } else {
+            yDirectionSquare = -1;
+        }
+    };
 };
