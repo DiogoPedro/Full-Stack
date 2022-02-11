@@ -1,5 +1,4 @@
 window.onload = init;
-
 function init() {
     //Elements in game;
     let btnStart = document.getElementById("initButton");
@@ -14,17 +13,18 @@ function init() {
     
     //Direction and control
     let game, frames, control = false;
+    let direction=0, shift = 4;
     
     //Data in the game
-    let [playerHeight, playerWidth] = [20, 85];
-    let [mapHeight, mapWidth, squareSide] = [500, 900];
+    let [playerHeight, playerWidth] = [85, 20];
+    let [mapHeight, mapWidth, squareSide] = [500, 900, 20];
 
     //Events about the game;
     btnStart.addEventListener("click", startGame);
-    document.addEventListener("keydown", movement);
-    document.addEventListener("keyup",movement2);
+    document.addEventListener("keydown", keyPressDown);
+    document.addEventListener("keyup",keyPressUp);
     
-    function startGame(){
+    function startGame(evt){
         if(!control){
             //Break loop in the requestAnimationFrame;
             cancelAnimationFrame(frames);
@@ -36,19 +36,38 @@ function init() {
 
             //Game initialized;
             control = true;
-            game();
+            gameRun();
         }
     };
-    function movement(){
-        alert(event.keyCode);
-    };
-    function movement2(){
-        let keyPress2 = event.keyCode;
-        console.log(keyPress2);
-    };
-    function game(){
+    function gameRun(){
         if(control){
+            movementP1();
         }
-        frames = requestAnimationFrame(game);
+        frames = requestAnimationFrame(gameRun);
     };
+    function keyPressDown(evt){
+        if(evt.keyCode == 87){
+            direction = -1; //Negative decrement y, up my div
+        } else if(evt.keyCode == 83){
+            direction = 1; //Negative increment y, down my div
+        }
+    };
+    function keyPressUp(evt){
+        if(evt.keyCode == 87){
+            direction = 0;
+        } else if(evt.keyCode == 83){
+            direction = 0;
+        }
+    };
+    function movementP1(){
+        yPlayer1 += direction * shift;
+        //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down.
+        if(yPlayer1 + playerHeight >= mapHeight + 129){
+            yPlayer1 = mapHeight - playerHeight + 129;
+        } else if(yPlayer1 <= 130){
+            yPlayer1 = 130;
+        }
+        //CSS Absolute modify
+        elPlayer1.style.top = yPlayer1 + "px";
+    }
 };
