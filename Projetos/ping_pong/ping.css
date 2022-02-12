@@ -32,7 +32,7 @@ header > h1{
 div > #player1{
     position: absolute;
     top: 310px;
-    left: 350px;
+    left: 320px;
     width: 20px;
     height: 85px;
     border-radius: 8%;
@@ -41,7 +41,7 @@ div > #player1{
 div > #player2{
     position: absolute;
     top: 310px;
-    left: 1170px;
+    left: 1195px;
     width: 20px;
     height: 85px;
     border-radius: 8%;

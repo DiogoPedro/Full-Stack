@@ -6,19 +6,20 @@ function init() {
     let elPlayer2 = document.getElementById("player2");
     let elSquare = document.getElementById("square");
     
-    //Position in the game in coordinates;
+    //Position in the game in coordinates and score;
+    let scorePlayer1, scorePlayer2;
     let xPlayer1, yPlayer1;
     let xPlayer2, yPlayer2;
     let xSquare, ySquare;
     
     //Direction and control about animation
     let frames, control = false;
-    let direction=0, shift = 3, directionCPU, xDirectionSquare, yDirectionSquare, shiftSquare;
-    shiftSquare = 4;
+    let direction, shift, directionCPU, xDirectionSquare, yDirectionSquare, shiftSquare;
+    shiftSquare = 4; shift = 3; direction = 0;
 
     //Data in the game
-    let [playerHeight, playerWidth] = [85, 20];
-    let [mapHeight, mapWidth, squareSide] = [500, 900, 20];
+    const [playerHeight, playerWidth] = [85, 20];
+    const [mapHeight, mapWidth, squareSide] = [500, 900, 20];
 
     //Events about the game;
     btnStart.addEventListener("click", startGame);
@@ -30,9 +31,11 @@ function init() {
             //Break loop in the requestAnimationFrame;
             cancelAnimationFrame(frames);
             //Position Inital [x,y];
-            [xPlayer1, yPlayer1] = [350, 310];
-            [xPlayer2, yPlayer2] = [1170, 310];
+            [xPlayer1, yPlayer1] = [320, 310];
+            [xPlayer2, yPlayer2] = [1195, 310];
             [xSquare, ySquare] = [765,355];
+            //Pontuation Inital;
+            [scorePlayer1, scorePlayer2] = [0, 0];
             //Game initialized;
             control = true;
             directionSquareRandom();
@@ -45,6 +48,7 @@ function init() {
             movementP2();
             movementSquare();
             collision();
+            checkScores();
         }
         frames = requestAnimationFrame(gameRun);
     };
@@ -70,6 +74,13 @@ function init() {
         } else if(yPlayer1 <= 130){
             yPlayer1 = 130;
         }
+
+        //Resolves player 1's problem of eating the square when abruptly ascending or descending.
+        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
+            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
+                direction = 0;
+            };
+        };
         //CSS Absolute modify
         elPlayer1.style.top = yPlayer1 + "px";
     };
@@ -86,6 +97,13 @@ function init() {
         } else if(yPlayer2 <= 130){
             yPlayer2 = 130;
         }
+
+        //Resolves player 1's problem of eating the square when abruptly ascending or descending.
+        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
+            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
+                direction = 0;
+            };
+        };
         //CSS Absolute modify
         elPlayer2.style.top = yPlayer2 + "px";
     };
@@ -137,12 +155,8 @@ function init() {
                 shift += 0.2;
             };
         };
-        // if(xSquare <= 320){
-        //     alert("Player 2, vencendor!");
-        // };
-        // if(xSquare + squareSide >= mapWidth + 320){
-        //     alert("Player 1, vencendor!");
-        // }
+        //Speed limited;
+        (shift > 11) ? shift = 11 : "";
     };
     function directionSquareRandom(){
         //Direction Square
@@ -157,5 +171,21 @@ function init() {
         } else {
             yDirectionSquare = -1;
         }
+    };
+    function checkScores(){
+        //Check the colision 
+        xSquare <= 320 ? scorePlayer2 += 1 : ""
+        xSquare + squareSide >= mapWidth + 320 ? scorePlayer1 += 1 : ""
+        //Winner
+        if(scorePlayer1 >= 5){
+            cancelAnimationFrame(frames);
+            control = false;
+            alert("Winner Player 1!!!, did 5 scores");
+        };
+        if(scorePlayer2 >= 5){
+            cancelAnimationFrame(frames);
+            control = false;
+            alert("Winner Player 2!!!, did 5 scores");
+        };
     };
 };
