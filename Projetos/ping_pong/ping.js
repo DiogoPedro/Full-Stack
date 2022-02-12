@@ -5,36 +5,34 @@ function init() {
     let elPlayer1 = document.getElementById("player1");
     let elPlayer2 = document.getElementById("player2");
     let elSquare = document.getElementById("square");
-    // let elBody = document.getElementById("bodyAll");
     
     //Position in the game in coordinates;
     let xPlayer1, yPlayer1;
-    let xPlayer2, yPlater2;
+    let xPlayer2, yPlayer2;
     let xSquare, ySquare;
     
     //Direction and control
     let game, frames, control = false;
-    let direction=0, shift = 3, xDirectionSquare, yDirectionSquare;
+    let direction=0, shift = 3, directionCPU, xDirectionSquare, yDirectionSquare;
     
     //Data in the game
     let [playerHeight, playerWidth] = [85, 20];
     let [mapHeight, mapWidth, squareSide] = [500, 900, 20];
-    // let bidyWidth = elBody.getBoundingClientRect().width;
 
     //Events about the game;
     btnStart.addEventListener("click", startGame);
     document.addEventListener("keydown", keyPressDown);
     document.addEventListener("keyup",keyPressUp);
     
-    function startGame(evt){
+    function startGame(){
         if(!control){
             //Break loop in the requestAnimationFrame;
             cancelAnimationFrame(frames);
 
             //Position Inital [x,y];
             [xPlayer1, yPlayer1] = [350, 310];
-            [xPlayer2, yPlater2] = [1170, 310];
-            [xSquare, ySquare] = [442,220];
+            [xPlayer2, yPlayer2] = [1170, 310];
+            [xSquare, ySquare] = [765,355];
 
             //Game initialized;
             control = true;
@@ -46,7 +44,9 @@ function init() {
     function gameRun(){
         if(control){
             movementP1();
+            movementP2();
             movementSquare();
+            collision();
         }
         frames = requestAnimationFrame(gameRun);
     };
@@ -66,7 +66,7 @@ function init() {
     };
     function movementP1(){
         yPlayer1 += direction * shift;
-        //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down.
+        //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down, more 20px because header.
         if(yPlayer1 + playerHeight >= mapHeight + 129){
             yPlayer1 = mapHeight - playerHeight + 129;
         } else if(yPlayer1 <= 130){
@@ -75,12 +75,27 @@ function init() {
         //CSS Absolute modify
         elPlayer1.style.top = yPlayer1 + "px";
     };
+    function movementP2(){
+        if(yPlayer2 < ySquare){
+            directionCPU = -1;
+        } else { directionCPU = 1;}
+
+        yPlayer2 += directionCPU * shift;
+        //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down, more 20px because header.
+        if(yPlayer2 + playerHeight >= mapHeight + 129){
+            yPlayer2 = mapHeight - playerHeight + 129;
+        } else if(yPlayer2 <= 130){
+            yPlayer2 = 130;
+        }
+        //CSS Absolute modify
+        elPlayer2.style.top = yPlayer2 + "px";
+    };
     function movementSquare(){
         //Condition contour usign position relative, let's do it comparations in use;
-        if(ySquare <= 0 || ySquare >= mapHeight - squareSide){
+        if(ySquare <= 130 || ySquare + squareSide >= mapHeight + 129){
             yDirectionSquare *= -1;
         }
-        if(xSquare <= 0 || xSquare + squareSide >= mapWidth ){
+        if(xSquare <= 320 || xSquare + squareSide >= mapWidth + 320){
             xDirectionSquare *= -1;
         }
         xSquare += xDirectionSquare * shift;
@@ -88,7 +103,27 @@ function init() {
 
         elSquare.style.left = xSquare + "px";
         elSquare.style.top = ySquare + "px";
-    }
+    };
+    function collision(){
+        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
+            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
+                xDirectionSquare *= -1;
+                yDirectionSquare *= -1;
+            };
+        };
+        if(xPlayer2 <= xSquare && xSquare <= xPlayer2 + playerWidth){
+            if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight){
+                xDirectionSquare *= -1;
+                yDirectionSquare *= -1;
+            };
+        };
+        if(xSquare <= 320){
+            alert("Player 2, vencendor!");
+        };
+        if(xSquare + squareSide >= mapWidth + 320){
+            alert("Player 1, vencendor!");
+        }
+    };
     function directionSquareRandom(){
         //Direction Square
         if(Math.random() < 0.5){

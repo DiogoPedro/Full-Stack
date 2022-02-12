@@ -48,9 +48,9 @@ div > #player2{
     background-color:blue;
 }
 div > #square{
-    position: relative;
-    top: 220px;
-    left: 442px;
+    position: absolute;
+    top: 355px;
+    left: 765px;
     width: 20px;
     height: 20px;
     border-radius: 20%;
