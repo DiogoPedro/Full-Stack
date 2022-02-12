@@ -74,11 +74,12 @@ function init() {
         elPlayer1.style.top = yPlayer1 + "px";
     };
     function movementP2(){
-        if(yPlayer2 < ySquare){
+        if(yPlayer2 <= ySquare){
+            directionCPU = 1;
+        } else 
             directionCPU = -1;
-        } else { directionCPU = 1;}
 
-        yPlayer2 += directionCPU * shift;
+        yPlayer2 += directionCPU * (shift * 0.75);
         //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down, more 20px because header.
         if(yPlayer2 + playerHeight >= mapHeight + 129){
             yPlayer2 = mapHeight - playerHeight + 129;
@@ -108,27 +109,32 @@ function init() {
     };
     function collision(){
         if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
-            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight * 0.4){
+            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + Math.floor(playerHeight * 0.4)){
                 yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
                 xDirectionSquare *= -1; //Do moviment in diagonal;
-            } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight * 0.5){
+                shift += 0.2;
+            } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + Math.floor(playerHeight * 0.5)){
                 xDirectionSquare *= -1;
                 yDirectionSquare = 0; //Do moviment in right;
             } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
                 yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
                 xDirectionSquare *= -1; //Do moviment in left;
+                shift += 0.2;
             };
         };
         if(xPlayer2 <= xSquare && xSquare <= xPlayer2 + playerWidth){
-            if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight/3){
+            if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + Math.floor(playerHeight * 0.4)){
                 yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
                 xDirectionSquare *= -1; //Do moviment in diagonal;
-            } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight*2/3){
+                shift += 0.2;
+            } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + Math.floor(playerHeight* 0.5)){
                 xDirectionSquare *= -1;
                 yDirectionSquare = 0; //Do moviment in right;
+                shift += 0.2;
             } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight){
                 yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
                 xDirectionSquare *= -1; //Do moviment in left;
+                shift += 0.2;
             };
         };
         // if(xSquare <= 320){
