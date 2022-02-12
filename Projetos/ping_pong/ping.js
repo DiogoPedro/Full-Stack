@@ -11,10 +11,11 @@ function init() {
     let xPlayer2, yPlayer2;
     let xSquare, ySquare;
     
-    //Direction and control
-    let game, frames, control = false;
-    let direction=0, shift = 3, directionCPU, xDirectionSquare, yDirectionSquare;
-    
+    //Direction and control about animation
+    let frames, control = false;
+    let direction=0, shift = 3, directionCPU, xDirectionSquare, yDirectionSquare, shiftSquare;
+    shiftSquare = 4;
+
     //Data in the game
     let [playerHeight, playerWidth] = [85, 20];
     let [mapHeight, mapWidth, squareSide] = [500, 900, 20];
@@ -28,15 +29,12 @@ function init() {
         if(!control){
             //Break loop in the requestAnimationFrame;
             cancelAnimationFrame(frames);
-
             //Position Inital [x,y];
             [xPlayer1, yPlayer1] = [350, 310];
             [xPlayer2, yPlayer2] = [1170, 310];
             [xSquare, ySquare] = [765,355];
-
             //Game initialized;
             control = true;
-
             directionSquareRandom();
             gameRun();
         }
@@ -98,31 +96,47 @@ function init() {
         if(xSquare <= 320 || xSquare + squareSide >= mapWidth + 320){
             xDirectionSquare *= -1;
         }
-        xSquare += xDirectionSquare * shift;
-        ySquare += yDirectionSquare * shift;
-
+        if(Math.random <= 0.5){
+            xSquare += xDirectionSquare * shiftSquare;
+            ySquare += yDirectionSquare * shift;
+        } else {
+            xSquare += xDirectionSquare * shift;
+            ySquare += yDirectionSquare * shiftSquare;
+        }
         elSquare.style.left = xSquare + "px";
         elSquare.style.top = ySquare + "px";
     };
     function collision(){
         if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
-            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
+            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight * 0.4){
+                yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
+                xDirectionSquare *= -1; //Do moviment in diagonal;
+            } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight * 0.5){
                 xDirectionSquare *= -1;
-                yDirectionSquare *= -1;
+                yDirectionSquare = 0; //Do moviment in right;
+            } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
+                yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
+                xDirectionSquare *= -1; //Do moviment in left;
             };
         };
         if(xPlayer2 <= xSquare && xSquare <= xPlayer2 + playerWidth){
-            if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight){
+            if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight/3){
+                yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
+                xDirectionSquare *= -1; //Do moviment in diagonal;
+            } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight*2/3){
                 xDirectionSquare *= -1;
-                yDirectionSquare *= -1;
+                yDirectionSquare = 0; //Do moviment in right;
+            } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight){
+                yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
+                xDirectionSquare *= -1; //Do moviment in left;
             };
         };
-        if(xSquare <= 320){
-            alert("Player 2, vencendor!");
-        };
-        if(xSquare + squareSide >= mapWidth + 320){
-            alert("Player 1, vencendor!");
-        }
+        // if(xSquare <= 320){
+        //     alert("Player 2, vencendor!");
+        // };
+        // if(xSquare + squareSide >= mapWidth + 320){
+        //     alert("Player 1, vencendor!");
+        // }
     };
     function directionSquareRandom(){
         //Direction Square
