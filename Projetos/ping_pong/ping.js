@@ -14,8 +14,9 @@ function init() {
     
     //Direction and control about animation
     let frames, control = false;
-    let direction, shift, directionCPU, xDirectionSquare, yDirectionSquare, shiftSquare;
-    shiftSquare = 4; shift = 3; direction = 0;
+    let direction, directionCPU, xDirectionSquare, yDirectionSquare;
+    let shift, shiftSquare, controlColisionP1, controlColisionP2;
+    direction = 0;
 
     //Data in the game
     const [playerHeight, playerWidth] = [85, 20];
@@ -36,8 +37,11 @@ function init() {
             [xSquare, ySquare] = [765,355];
             //Pontuation Inital;
             [scorePlayer1, scorePlayer2] = [0, 0];
-            //Game initialized;
+            //Control and shift initialized;
+            [shiftSquare, shift] = [4,3];
+            [controlColisionP1, controlColisionP2] = [1,1];
             control = true;
+
             directionSquareRandom();
             gameRun();
         }
@@ -74,13 +78,6 @@ function init() {
         } else if(yPlayer1 <= 130){
             yPlayer1 = 130;
         }
-
-        //Resolves player 1's problem of eating the square when abruptly ascending or descending.
-        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
-            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
-                direction = 0;
-            };
-        };
         //CSS Absolute modify
         elPlayer1.style.top = yPlayer1 + "px";
     };
@@ -90,31 +87,33 @@ function init() {
         } else 
             directionCPU = -1;
 
-        yPlayer2 += directionCPU * (shift * 0.75);
+        yPlayer2 += directionCPU * (shift * 0.82);
         //Condition contour = body - mapHeight = 720 - 500 = 220px where 110px in top and 110px in down, more 20px because header.
         if(yPlayer2 + playerHeight >= mapHeight + 129){
             yPlayer2 = mapHeight - playerHeight + 129;
         } else if(yPlayer2 <= 130){
             yPlayer2 = 130;
         }
-
-        //Resolves player 1's problem of eating the square when abruptly ascending or descending.
-        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
-            if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
-                direction = 0;
-            };
-        };
         //CSS Absolute modify
         elPlayer2.style.top = yPlayer2 + "px";
     };
     function movementSquare(){
-        //Condition contour usign position relative, let's do it comparations in use;
+        //Condition contour usign position;
         if(ySquare <= 130 || ySquare + squareSide >= mapHeight + 129){
             yDirectionSquare *= -1;
-        }
+        };
         if(xSquare <= 320 || xSquare + squareSide >= mapWidth + 320){
             xDirectionSquare *= -1;
-        }
+            //Score count and control ;
+            if(xSquare <= 320){
+                controlColisionP2 = 1;
+                scorePlayer2 += 1;
+            };
+            if(xSquare + squareSide >= mapWidth + 320){
+                controlColisionP1 = 1; 
+                scorePlayer1 += 1;
+            };
+        };
         if(Math.random <= 0.5){
             xSquare += xDirectionSquare * shiftSquare;
             ySquare += yDirectionSquare * shift;
@@ -126,33 +125,47 @@ function init() {
         elSquare.style.top = ySquare + "px";
     };
     function collision(){
-        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth){
+        if(xPlayer1 <= xSquare && xSquare <= xPlayer1 + playerWidth && controlColisionP1 == 1){
+            alert("bateu no p1: " + controlColisionP1);           
             if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + Math.floor(playerHeight * 0.4)){
-                yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
+                //yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1;
+                yDirectionSquare *= -1; 
                 xDirectionSquare *= -1; //Do moviment in diagonal;
                 shift += 0.2;
+                controlColisionP1 == 0;
+                controlColisionP2 = 1;
             } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + Math.floor(playerHeight * 0.5)){
                 xDirectionSquare *= -1;
                 yDirectionSquare = 0; //Do moviment in right;
+                controlColisionP1 == 0;
+                controlColisionP2 = 1;
             } else if(yPlayer1 <= ySquare && ySquare <= yPlayer1 + playerHeight){
-                yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
+                yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1;
                 xDirectionSquare *= -1; //Do moviment in left;
                 shift += 0.2;
+                controlColisionP1 == 0;
+                controlColisionP2 = 1;
             };
         };
-        if(xPlayer2 <= xSquare && xSquare <= xPlayer2 + playerWidth){
+        if(xPlayer2 <= xSquare && xSquare <= xPlayer2 + playerWidth && controlColisionP2 == 1){
             if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + Math.floor(playerHeight * 0.4)){
                 yDirectionSquare == 0 ? yDirectionSquare = -1 : yDirectionSquare *= -1; 
                 xDirectionSquare *= -1; //Do moviment in diagonal;
                 shift += 0.2;
+                controlColisionP2 = 0;
+                controlColisionP1 = 1;
             } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + Math.floor(playerHeight* 0.5)){
                 xDirectionSquare *= -1;
                 yDirectionSquare = 0; //Do moviment in right;
                 shift += 0.2;
+                controlColisionP2 = 0;
+                controlColisionP1 = 1;
             } else if(yPlayer2 <= ySquare && ySquare <= yPlayer2 + playerHeight){
                 yDirectionSquare == 0 ? yDirectionSquare = 1 : yDirectionSquare *= 1;
                 xDirectionSquare *= -1; //Do moviment in left;
                 shift += 0.2;
+                controlColisionP2 = 0;
+                controlColisionP1 = 1;
             };
         };
         //Speed limited;
@@ -160,22 +173,19 @@ function init() {
     };
     function directionSquareRandom(){
         //Direction Square
-        if(Math.random() < 0.5){
+        if(Math.random() <= 0.5){
             xDirectionSquare = 1;
         } else {
             xDirectionSquare = -1;
         };
         //I need two random, one for cada direction.
-        if(Math.random() < 0.5){
+        if(Math.random() <= 0.5){
             yDirectionSquare = 1;
         } else {
             yDirectionSquare = -1;
         }
     };
     function checkScores(){
-        //Check the colision 
-        xSquare <= 320 ? scorePlayer2 += 1 : ""
-        xSquare + squareSide >= mapWidth + 320 ? scorePlayer1 += 1 : ""
         //Winner
         if(scorePlayer1 >= 5){
             cancelAnimationFrame(frames);
