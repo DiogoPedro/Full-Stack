@@ -1,0 +1,1 @@
+É um jogo ping-pong escrito em JS Puro, a finalidade de sua criação é testar meus conhecimentos em JS, CSS-Position, Eventos, requestAnimationFrame e muito mais. Para controlar o Player utilize as teclas "W" e "S", para subir e descer respectivamente, para testar basta abrir o arquivo Este.html, caso queira observar apenas o js, css existe o arquivo separado em arquivos.
