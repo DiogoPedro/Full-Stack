@@ -1,15 +1,15 @@
 //Valores qualquer devem descritos como unknown;
 let who: unknown;
-who = [3,2,1];
+who = [3, 2, 1];
 who = true;
 who = "Hello World";
 
-let greet:string;
+let greet: string;
 //Isso vai resultar em um erro, greet nao sabe que valor who possui;
 //greet = who;
 
 //Dessa forma o typrescript permite, porque acredita ser do tipo esperado, mas isso pode nao ser considerado uma boa pratica.
-if(typeof who === "string"){
+if (typeof who === "string") {
     greet = who;
 }
 
@@ -19,7 +19,7 @@ if(typeof who === "string"){
 let looselyTyped: any = 4;
 // OK, toFixed exists (but the compiler doesn't check)
 looselyTyped.toFixed();
- 
+
 let strictlyTyped: unknown = 4;
 
 //Nao permite verificar se existe tal propriedade ou nao;
@@ -34,22 +34,22 @@ box = <String>box;
 box = box as string;
 
 //Alguns exemplos de declaracoes de tipo com funcoes, o tipo eh declarado no final uma droga se comparada a C que era no inicio, ahhhh =(
-function imprimirHelloWorld():void{
+function imprimirHelloWorld(): void {
     console.log("Hello World");
 }
 
 //Terceiro parametro opcional
-function mul(x1:number, x2:number, x3?:number):number{
-    let resultado:number;
-    if(x3 !== undefined){
-        resultado = x1*x2*x3;
-    } else resultado = x1*x2;
-    
+function mul(x1: number, x2: number, x3?: number): number {
+    let resultado: number;
+    if (x3 !== undefined) {
+        resultado = x1 * x2 * x3;
+    } else resultado = x1 * x2;
+
     return resultado;
 }
 
 //Terceiro parametro opcional
-function mul2(x1:number, x2:number, x3:number = 3):number{
-    return x1*x2*x3;
+function mul2(x1: number, x2: number, x3: number = 3): number {
+    return x1 * x2 * x3;
 }
-console.log(`O valor da mul: ${mul2(2,3,1)}`);
+console.log(`O valor da mul: ${mul2(2, 3, 1)}`);
