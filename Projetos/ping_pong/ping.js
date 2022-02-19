@@ -122,9 +122,6 @@ function init() {
             if (yplayer <= ySquare && ySquare <= yplayer + Math.floor(playerHeight * 0.4)) {
                 yDirectionSquare = -1; xDirectionSquare *= -1;
                 controlColisionPlayer == 0;  controlColisionOtherPlay = 1;  shift += 0.2;  
-            } else if (yplayer <= ySquare && ySquare <= yplayer + Math.floor(playerHeight * 0.5)) {
-                xDirectionSquare *= -1; yDirectionSquare = 0;
-                controlColisionPlayer == 0;  controlColisionOtherPlay = 1;  shift += 0.2;
             } else if (yplayer <= ySquare && ySquare <= yplayer + playerHeight) {
                 yDirectionSquare = 1; xDirectionSquare *= -1;
                 controlColisionPlayer == 0;  controlColisionOtherPlay = 1;  shift += 0.2;
