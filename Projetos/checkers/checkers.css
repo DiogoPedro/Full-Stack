@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    font-family: sans-serif;
+    background-color: white;
+    box-sizing: border-box;
+    height: 100%;
+}
+.all {
+    margin: auto;
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    box-shadow: 4px 0 8px 1px #D3D3D3, -4px 0 8px 1px #D3D3D3;
+}
+header {
+    height: 15%;
+    border-bottom: solid 2px black;
+}
+h1 {
+    color: black;
+    text-align-last: center;
+    padding-top: 20px;
+    font-size: 38px;
+}
+#game {
+    display: grid;
+    grid-template: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%/ 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    border: solid 3px gray;
+    border-radius: 0%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 70%;
+    width: 80%;
+}
+p {
+    border: 1px solid black;
+}
