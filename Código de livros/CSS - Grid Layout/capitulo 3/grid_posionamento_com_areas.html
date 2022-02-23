@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livro CSS Grid Layout do Maujor</title>
+    <style rel="stylesheet">
+        html {
+            font-size: 10px;
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font: 2rem sans-serif;
+            background: white;
+            color: #333;
+            margin: 40px;
+        }
+
+        .container>* {
+            padding: 10px;
+            font: 20px sans-serif;
+            color: white;
+        }
+
+        .topo,
+        .rodape {
+            background: #0000b3;
+        }
+
+        .menu {
+            background: #e37e35;
+        }
+
+        .principal {
+            background: #ab2121;
+        }
+
+        .primaria {
+            background: #8cd9ad;
+        }
+
+        .secundaria {
+            background: #ea9a62;
+        }
+
+        .coxinha {
+            background-color: aqua;
+        }
+
+        /***************************************************/
+        .container {
+            display: grid;
+            grid-template-areas:
+                "topo     topo      topo"
+                "primaria     menu      secundaria"
+                "primaria principal secundaria"
+                "coxinha   coxinha    rodape";
+            grid-gap: 5px 10px;
+        }
+
+        .topo {
+            grid-area: topo;
+        }
+
+        .menu {
+            grid-area: menu;
+        }
+
+        .principal {
+            grid-area: principal;
+        }
+
+        .primaria {
+            grid-area: primaria;
+        }
+
+        .secundaria {
+            grid-area: secundaria;
+        }
+
+        .rodape {
+            grid-area: rodape;
+        }
+
+        .coxinha {
+            grid-area: coxinha;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="topo">Topo</header>
+        <nav class="menu">Menu</nav>
+
+        <main class="principal">Principal</main>
+        <aside class="primaria">Primária</aside>
+        <aside class="secundaria">Secundária</aside>
+        <div class="coxinha">Amigo, amigaao, amigao</div>
+        <footer class="rodape">Rodapé</footer>
+    </div>
+</body>
+
+</html>
