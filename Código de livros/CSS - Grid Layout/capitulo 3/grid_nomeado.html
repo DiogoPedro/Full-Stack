@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livro CSS Grid Layout do Maujor</title>
+<style rel="stylesheet">
+html {
+	font-size: 10px;
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+body {
+	font: 2rem sans-serif;
+	background: white;
+	color: #333;
+	margin: 40px;
+	}
+.box {
+	color: white;
+	border: 4px solid #333;
+	font-size: 2.6rem;
+	padding: 10px; 
+	 }
+.box1 {background: #8cd9ad;}
+.box2 {background: #e37e35;}
+.box3 {background: #8b008b;}
+.box4 {background: #ab2121;}
+.box5 {
+    background: #0000b3;
+    grid-area: inicio / inicio;
+}
+.box6 {background: #999;}
+.box7 {background: #8b4513;}
+
+.box8 {background: #ccc;}
+.box9 {background: #80dd80;}
+.container {
+	display: grid;
+	grid-template-columns: [inicio] 150px [f-primaria i-principal] 700px [f-principal i-secundaria] 300px [f-secundaria fim];
+	grid-template-rows: [inicio] 250px [f-topo i-menu] 400px [f-menu i-3col] 300px [f-3col fim];
+	grid-gap: 5px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+    	<div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+    </div>
+</body>
+</html>

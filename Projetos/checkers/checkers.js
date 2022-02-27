@@ -3,6 +3,7 @@ let [qntPlayer1, qntPlayer2] = [12, 12];
 let vezDoJogador = 'P1';
 let posicaoAntesEvento = null;
 let posicaoAposEvento = null;
+let deuok = false;
 
 function init() {
     criarTabuleiro();
@@ -62,14 +63,11 @@ function criarMarcacao() {
 };
 function criarPecas(position, end, namePlayer, controle) {
     let elPecas = document.getElementsByClassName("peca_do_tabuleiro");
-    let idCreate = 1;
     for (i = position; i < end; i++) {
         for (j = 0; j < 8; j++) {
             if (controle) {
-                elPecas[i * 8 + j].setAttribute("id", `${namePlayer}:` + String(idCreate));
                 elPecas[i * 8 + j].style.color = "white";
                 elPecas[i * 8 + j].appendChild(document.createTextNode(namePlayer));
-                idCreate++;
             };
             controle = !controle;
         };
@@ -78,16 +76,20 @@ function criarPecas(position, end, namePlayer, controle) {
 };
 function moviment(evt) {
     if (posicaoAntesEvento == null) {
-        if (evt.currentTarget.id.includes(vezDoJogador)) {
+        if (evt.currentTarget.innerText == vezDoJogador) {
             posicaoAntesEvento = posicaoJogador(evt.currentTarget.id);
-            evt.currentTarget.style.backgroundColor = "blue";
+            if(vezDoJogador == "P1"){
+                evt.currentTarget.style.backgroundColor = "blue";
+            } else {
+                evt.currentTarget.style.backgroundColor = "red";
+            }
         };
     } else {
         if (posicaoAposEvento == null) {
             posicaoAposEvento = posicaoJogador(evt.currentTarget.id);
 
             //Verificar que se existe texto, eh um requisito para ser valida;
-            if (evt.currentTarget.innerText == "" && jogadaValida()) {
+            if (evt.currentTarget.innerText == "" && (jogadaValida() || comerPeca())) {
                 posicaoAposEvento = parseInt(evt.currentTarget.id);
                 vezDoJogador == "P1" ? vezDoJogador = "P2" : vezDoJogador = "P1";
                 jogada();
@@ -113,11 +115,12 @@ function jogadaValida() {
     let diagonalA, diagonalB;
 
     if (vezDoJogador == "P1") {
-       [diagonalA, diagonalB] = [7, 9];
+        [diagonalA, diagonalB] = [7, 9];
     } else {
-       [diagonalA, diagonalB] = [-9, -7];
+        [diagonalA, diagonalB] = [-9, -7];
     }
-    
+
+    //Pos posicao = 35 / 
     if (posicaoAposEvento == (posicaoAntesEvento + diagonalB) || posicaoAposEvento == (posicaoAntesEvento + diagonalA)) {
         if ((posicaoAntesEvento % 8 == 0) && posicaoAposEvento == (posicaoAntesEvento + diagonalA)) {
             return false;
@@ -130,13 +133,54 @@ function jogadaValida() {
         return false;
     };
 };
+function comerPeca() {
+    let elemento, diagonalA, diagonalB, diagonalAA, diagonalBB;
+    //diagonalA = diagonal principal
+    //digonalB = diagonal secundaria
+    if (vezDoJogador == "P1") {
+        [diagonalA, diagonalB] = [7, 9];
+        [diagonalAA, diagonalBB] = [14, 18];
+    } else {
+        [diagonalA, diagonalB] = [-9, -7];
+        [diagonalAA, diagonalBB] = [-18, -14];
+    };
+
+    if (posicaoAposEvento == posicaoAntesEvento + diagonalBB || posicaoAposEvento == posicaoAntesEvento + diagonalAA) {
+        if ((posicaoAntesEvento % 8 == 0) && (posicaoAntesEvento + 1) % 8 == 0) {
+            return false;
+        }
+        if (Math.abs(posicaoAposEvento - posicaoAntesEvento) == 18 || Math.abs(posicaoAposEvento - posicaoAntesEvento) == 14) {
+            if(Math.abs(posicaoAposEvento - posicaoAntesEvento) == 14){
+                if(vezDoJogador == "P1"){
+                    elemento = document.getElementById(posicaoAntesEvento + diagonalA);
+                } else {
+                    elemento = document.getElementById(posicaoAntesEvento + diagonalB);
+                }
+            } else {
+                if(vezDoJogador == "P1"){
+                    elemento = document.getElementById(posicaoAntesEvento + diagonalB);
+                } else {
+                    elemento = document.getElementById(posicaoAntesEvento + diagonalA);
+                }
+            };
+
+            if (elemento.innerText != "" && !elemento.innerText.includes(vezDoJogador)) {  
+                deuok = true;
+                return true;
+            }
+        };
+    } 
+    return false;
+};
 function jogada() {
+    console.log(deuok);
     let el = document.getElementsByClassName("peca_do_tabuleiro")[posicaoAntesEvento];
     let el2 = document.getElementsByClassName("peca_do_tabuleiro")[posicaoAposEvento];
 
-    //Fazendo a posicao original voltar a sua cor de origem, e alterando o id da minha peca;
+    //Fazendo a posicao original voltar a sua cor de origem, e alterando o id das minhas pecas para manter a posicao no mapa;
     el.style.backgroundColor = "black";
     el2.setAttribute("id", posicaoAntesEvento);
+    el.setAttribute("id", posicaoAposEvento);
 
     //Fazendo a troca de posicao entre null e peca jogada;
     swap(el, el2);
@@ -145,6 +189,10 @@ function jogada() {
     posicaoAposEvento = null;
 };
 function swap(node1, node2) {
+    node1.style.backgroundColor = "black";
+    node2.setAttribute("id", posicaoAntesEvento);
+    node1.setAttribute("id", posicaoAposEvento);
+
     const afterNode2 = node2.nextElementSibling;
     const parent = node2.parentNode;
     node1.replaceWith(node2);
