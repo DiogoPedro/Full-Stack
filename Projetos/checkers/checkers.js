@@ -75,10 +75,14 @@ function criarPecas(position, end, namePlayer, controle) {
     };
 };
 function moviment(evt) {
+    if (qntPlayer1 == 0 || qntPlayer2 == 0) {
+        alert("Game Over!");
+    };
+
     if (posicaoAntesEvento == null) {
         if (evt.currentTarget.innerText == vezDoJogador) {
             posicaoAntesEvento = posicaoJogador(evt.currentTarget.id);
-            if(vezDoJogador == "P1"){
+            if (vezDoJogador == "P1") {
                 evt.currentTarget.style.backgroundColor = "blue";
             } else {
                 evt.currentTarget.style.backgroundColor = "red";
@@ -89,10 +93,10 @@ function moviment(evt) {
             posicaoAposEvento = posicaoJogador(evt.currentTarget.id);
 
             //Verificar que se existe texto, eh um requisito para ser valida;
-            if (evt.currentTarget.innerText == "" && (jogadaValida() || comerPeca())) {
+            if (evt.currentTarget.innerText == "" && jogadaValidaDama()) {
                 posicaoAposEvento = parseInt(evt.currentTarget.id);
-                vezDoJogador == "P1" ? vezDoJogador = "P2" : vezDoJogador = "P1";
                 jogada();
+
             } else {
                 let el = document.getElementsByClassName("peca_do_tabuleiro")[posicaoAntesEvento];
                 el.style.backgroundColor = "black";
@@ -120,7 +124,6 @@ function jogadaValida() {
         [diagonalA, diagonalB] = [-9, -7];
     }
 
-    //Pos posicao = 35 / 
     if (posicaoAposEvento == (posicaoAntesEvento + diagonalB) || posicaoAposEvento == (posicaoAntesEvento + diagonalA)) {
         if ((posicaoAntesEvento % 8 == 0) && posicaoAposEvento == (posicaoAntesEvento + diagonalA)) {
             return false;
@@ -133,11 +136,39 @@ function jogadaValida() {
         return false;
     };
 };
-function comerPeca() {
+function jogadaValidaDama() {
+    if (jogadaValida() || comerPeca("cimaParabaixo", true) || comerPeca("baixoParacima", true)) {
+        let posicoes = [-18, -14, 14, 18];
+        let podeJogarDenovo = false;
+        let [copyPosicaoAntesEvento, copyPosicaoAposEvento] = [posicaoAntesEvento, posicaoAposEvento];
+
+        for (let x in posicoes) {
+            if (copyPosicaoAposEvento + posicoes[x] > 0 && copyPosicaoAposEvento + posicoes[x] < 64) {
+                posicaoAntesEvento = copyPosicaoAposEvento;
+                posicaoAposEvento = copyPosicaoAposEvento + posicoes[x];
+            }
+
+            if (comerPeca("cimaParabaixo", false) || comerPeca("baixoParacima", false)) {
+                podeJogarDenovo = true;
+            }
+        }
+
+        if (!podeJogarDenovo) {
+            console.log("Entrou");
+            vezDoJogador == "P1" ? vezDoJogador = "P2" : vezDoJogador = "P1"
+        }
+
+        [posicaoAntesEvento, posicaoAposEvento] = [copyPosicaoAntesEvento, copyPosicaoAposEvento];
+        return true;
+    } else {
+        return false;
+    }
+}
+function comerPeca(positionAttack, validar) {
     let elemento, diagonalA, diagonalB, diagonalAA, diagonalBB;
     //diagonalA = diagonal principal
     //digonalB = diagonal secundaria
-    if (vezDoJogador == "P1") {
+    if (positionAttack == "cimaParabaixo") {
         [diagonalA, diagonalB] = [7, 9];
         [diagonalAA, diagonalBB] = [14, 18];
     } else {
@@ -150,30 +181,35 @@ function comerPeca() {
             return false;
         }
         if (Math.abs(posicaoAposEvento - posicaoAntesEvento) == 18 || Math.abs(posicaoAposEvento - posicaoAntesEvento) == 14) {
-            if(Math.abs(posicaoAposEvento - posicaoAntesEvento) == 14){
-                if(vezDoJogador == "P1"){
+            if (Math.abs(posicaoAposEvento - posicaoAntesEvento) == 14) {
+                if (positionAttack == "cimaParabaixo") {
                     elemento = document.getElementById(posicaoAntesEvento + diagonalA);
                 } else {
                     elemento = document.getElementById(posicaoAntesEvento + diagonalB);
                 }
             } else {
-                if(vezDoJogador == "P1"){
+                if (positionAttack == "cimaParabaixo") {
                     elemento = document.getElementById(posicaoAntesEvento + diagonalB);
                 } else {
                     elemento = document.getElementById(posicaoAntesEvento + diagonalA);
                 }
             };
 
-            if (elemento.innerText != "" && !elemento.innerText.includes(vezDoJogador)) {  
-                deuok = true;
+            //Devorando a peça;
+            if (elemento.innerText != "" && !elemento.innerText.includes(vezDoJogador)) {
+                if (validar) {
+                    //Contabilizar a quantidade de peccas
+                    vezDoJogador == "P1" ? qntPlayer2-- : qntPlayer1--;
+                    elemento.innerText = "";
+                };
+
                 return true;
-            }
+            };
         };
-    } 
+    };
     return false;
 };
 function jogada() {
-    console.log(deuok);
     let el = document.getElementsByClassName("peca_do_tabuleiro")[posicaoAntesEvento];
     let el2 = document.getElementsByClassName("peca_do_tabuleiro")[posicaoAposEvento];
 

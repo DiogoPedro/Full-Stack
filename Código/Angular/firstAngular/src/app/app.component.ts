@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Projeto: First Angular';
+  title = 'firstAngular';
+  name: string = "Diogo Pedro";
+  age = 22;
+  objExample = {
+    name: "Diogo Pedro",
+    age: 22,
+    email: "dpfs@cin.ufpe.br"
+  }
 }
