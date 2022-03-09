@@ -7,6 +7,7 @@ import { FirstComponentComponent } from './components/first-component/first-comp
 import { HomeComponent } from './components/home/home.component';
 import { DataComponent } from './components/data/data.component';
 import { DiretivaComponent } from './components/diretiva/diretiva.component';
+import { Data2Component } from './components/data2/data2.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DiretivaComponent } from './components/diretiva/diretiva.component';
     FirstComponentComponent,
     HomeComponent,
     DataComponent,
-    DiretivaComponent
+    DiretivaComponent,
+    Data2Component
   ],
   imports: [
     BrowserModule,

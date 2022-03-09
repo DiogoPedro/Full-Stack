@@ -5,3 +5,10 @@ h1 {
 h2 {
     color: peru;
 }
+div {
+    border-top: 2px solid red;
+    margin-bottom: 3px;
+}
+p   {
+    font-size: 19px;
+}

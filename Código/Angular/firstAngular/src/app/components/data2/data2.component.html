@@ -1,0 +1,12 @@
+<div>
+    <h1>Data2 works!</h1>
+    <button (click)="showEmail()">
+        Alternate: Age | Email
+    </button>
+    <p>Hello, my name is: {{name}}</p>
+    <p *ngIf="show">My age is: {{age}}</p>
+    <p *ngIf="!show">My email is: {{objectExample.email}}</p>
+    <button (click)="active()">
+        Active for Event
+    </button>
+</div>
