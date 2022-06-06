@@ -1,0 +1,12 @@
+{
+  "name": "cap-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "module_vm_example_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

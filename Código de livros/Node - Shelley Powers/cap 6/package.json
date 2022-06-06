@@ -1,0 +1,15 @@
+{
+  "name": "cap-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "classe_fs_stats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
