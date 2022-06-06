@@ -1,8 +1,10 @@
 <div>
     <h1>data works!</h1>
-    <p>Hello, my name is: {{name}}</p>
+    <p>Hello, my name is: {{fullName}}</p>
     <p>My age is: {{age}}</p>
     <p>My email is: {{objectExample.email}}</p>
     <p>Click in data2: {{countClick}}</p>
-    <app-data2 [name]="name" [age]="age" (changeNumber)="onChangeNumber()"></app-data2>
+    <p>{{"Example how to use pipe, uppercase" | uppercase }}</p>
+
+    <app-data2 [name]="fullName" [age]="age" (changeNumber)="onChangeNumber()"></app-data2>
 </div>

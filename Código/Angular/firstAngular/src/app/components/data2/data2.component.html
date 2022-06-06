@@ -9,4 +9,10 @@
     <button (click)="active()">
         Active for Event
     </button>
+    <p>Exemplo de listas com o uso da diretiva de ngFor*</p>
+    <ul>
+        <li *ngFor="let people of peoples">
+            Nome do Sujeito <strong>{{people.name}}</strong> e a idade do cidadao: <strong>{{people.age}}</strong>
+        </li>
+    </ul>
 </div>

@@ -1,1 +1,0 @@
-Aqui se encontra meus arquivos, códigos, anatações e projetos em desenvolvimento web.

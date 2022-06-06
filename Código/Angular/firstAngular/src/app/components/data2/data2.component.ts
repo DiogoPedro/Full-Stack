@@ -14,6 +14,14 @@ export class Data2Component implements OnInit {
   @Input() objectExample = {name: "unknown", age: -1, email: "email@gmail.com"};
 
   show : boolean = true;
+
+  peoples = [
+    {name: "Diogo Pedro", age: 22},
+    {name: "Pedro Diogo", age: 22},
+    {name: "Pedrogo Dio", age: 22},
+    {name: "Drope Diogo", age: 22}
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
