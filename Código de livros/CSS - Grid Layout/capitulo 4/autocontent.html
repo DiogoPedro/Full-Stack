@@ -1,0 +1,41 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livro CSS Grid Layout do Maujor</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<style rel="stylesheet">
+div { 
+	float: left;
+	margin: 20px;
+	border: 1px solid red; 
+	overflow: auto;
+	}
+.fixo250 { width: 250px; }
+.mincontent { width: -moz-min-content; width: min-content;}
+.maxcontent { width: -moz-max-content; width: max-content;}
+</style>
+</head>
+<body>
+<div class="fixo250"> 
+		<pre>div { width:250px; } </pre>
+        <img src="maujor.jpg" width="300" height="300" alt="avatar do Maujor">
+        <p>Grid Layout é uma tecnologia do W3C para se projetar layouts CSS.</p>
+</div>
+
+<div class="mincontent"> 
+		<pre>div { width:min-content; }</pre>
+		<img src="maujor.jpg" width="300" height="300" alt="avatar do Maujor">
+        <p>Grid Layout é uma tecnologia do W3C para se projetar layouts CSS.</p>
+</div>
+
+<div class="maxcontent"> 
+		<pre>div { width:max-content; }</pre>
+		<img src="maujor.jpg" width="300" height="300" alt="avatar do Maujor">
+        <p>Grid Layout é uma tecnologia do W3C para se projetar layouts CSS.</p>
+</div>
+</body>
+</html>

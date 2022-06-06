@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Livro CSS Grid Layout do Maujor</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<style rel="stylesheet">
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(3, [col] 1fr 5%);
+			grid-template-rows: [linha] 100px 4vh [linha] 100px [linha];
+		}
+
+		.box1 {
+			grid-column: col 1;
+		}
+
+		.box2 {
+			grid-column: col 2;
+		}
+
+		.box3 {
+			grid-column: col 3;
+		}
+
+		.box4 {
+			grid-row: linha 2;
+			grid-column: col 1;
+		}
+
+		.box5 {
+			grid-row: linha 2;
+			grid-column: col 2;
+		}
+
+		.box6 {
+			grid-row: linha 2;
+			grid-column: col 3;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="box box1">Box1</div>
+		<div class="box box2">Box2</div>
+		<div class="box box3">Box3</div>
+		<div class="box box4">Box4</div>
+		<div class="box box5">Box5</div>
+		<div class="box box6">Box6</div>
+	</div>
+</body>
+
+</html>

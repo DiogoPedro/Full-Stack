@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livro CSS Grid Layout do Maujor</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<style rel="stylesheet">
+.container {
+	display: grid;
+	grid-template-columns: repeat( 12, 7% ) ;
+	grid-template-rows: repeat( 10, 4vh );
+	grid-gap: 10px calc( (100% - 7%*12) / 11 ); 
+}
+</style>
+</head>
+<body>
+<div class="container"></div>
+</body>
+</html>

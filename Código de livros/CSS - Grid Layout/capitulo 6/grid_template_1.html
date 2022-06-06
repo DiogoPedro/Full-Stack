@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livro CSS Grid Layout do Maujor</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style rel="stylesheet">
+        .container {
+            width: 700px;
+            height: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 300px;
+            grid-template-rows: 300px 300px;
+            grid-gap: 10px;
+        }
+
+        .box1 {
+            grid-area: 1 / 1 / 1 / 3;
+            position: relative;
+        }
+
+        .box2 {
+            grid-area: 2 / 1 / 3 / 2;
+        }
+
+        .box3 {
+            grid-area: 2 / 2 / 2 / 3;
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+
+        .box1>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            border: 1px solid #f00;
+            border-radius: 50%;
+            background: #fff;
+            color: #f00;
+            font: 14px/1 sans-serif;
+        }
+
+        .lt {
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+        }
+
+        .rt {
+            right: 0;
+            top: 0;
+        }
+
+        .lb {
+            left: 0;
+            bottom: 0;
+        }
+
+        .rb {
+            right: 0;
+            bottom: 0;
+        }
+
+        .cc {
+            left: calc(50% - 25px);
+            top: calc(50% - 25px);
+        }
+
+        .coord {
+            left: 450px;
+            top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box box1">Box 1
+            <div class="lt">left<br>top</div>
+            <div class="rt">right<br>top</div>
+            <div class="cc">center<br>center</div>
+            <div class="lb">left<br>bottom</div>
+            <div class="rb">right<br>bottom</div>
+            <div class="coord">450px<br>150px</div>
+        </div>
+        <div class="box box2">Box2</div>
+        <div class="box box3">Box 3</div>
+    </div>
+</body>
+
+</html>

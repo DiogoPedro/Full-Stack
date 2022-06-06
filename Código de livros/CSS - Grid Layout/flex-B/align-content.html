@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livro CSS Grid Layout do Maujor</title>
+<link rel="stylesheet" type="text/css" href="estilos.css">
+<style rel="stylesheet">
+.container { 
+	display: flex;
+	flex-wrap: wrap;
+	height: 400px;
+}
+.box { margin: 0 1%;}
+.box1 { width: 30%;}
+.box2 { width: 40%;}
+.box3 { width: 20%;}
+.box4 { width: 10%;}
+.box5 { width: 60%;}
+.box6 { width: 10%;}
+</style>
+</head>
+<body>
+<h1>Interface interativa Flexbox do livro Grid Layout do Maujor</h1>
+<div class="selecao">
+    <p>Escolha um valor para a propriedade <code>align-content</code><br>
+    O valor padrão é <code>stretch</code></p>
+        <select id="escolher">
+            <option value="stretch" selected>stretch</option>
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+        </select>	
+</div>    
+    
+<div class="container">
+	<div class="box box1">DIV1</div>
+	<div class="box box2">DIV2</div>
+	<div class="box box3">DIV3</div>
+	<div class="box box4">DIV4</div>
+	<div class="box box5">DIV5</div>
+	<div class="box box6">DIV6</div>
+</div>
+
+<div class="fixo">  
+    <h2>Legenda</h2>
+    <div class="fc">flex-container</div>
+    <br>
+    <div class="fi">flex-items</div>
+</div>
+
+<script type="text/javascript" src="interativo.js"></script>
+<script type="text/javascript">
+escolher.onchange = function() {
+	valor = this.value;
+	container.style.alignContent = valor;
+}
+</script>    
+</body>
+</html>

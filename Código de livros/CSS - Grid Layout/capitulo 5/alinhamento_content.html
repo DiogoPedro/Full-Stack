@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livro CSS Grid Layout do Maujor</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<style rel="stylesheet">
+body {margin: 30px;}
+h1, p {margin: 0;} 
+#container {
+	max-width: 800px;
+	height: 600px;
+	border: 2px solid black;
+	margin:10px 0;
+	display: grid;
+	grid-template-columns: repeat( 3, 20% );
+	grid-template-rows: repeat( 3, 100px );
+	grid-gap: 10px;
+}
+.box1 { 
+	grid-column: 1 / 3;
+	grid-row: 1;
+}
+.box2 { 
+	grid-column: 3;
+	grid-row: 1 / 4;
+}
+.box3 { 
+	grid-column: 1;
+	grid-row: 2 / 4;
+}
+.box4 { 
+	grid-column: 2;
+	grid-row: 2 / 4;
+}
+</style>
+</head>
+<body>
+<h1>Alinhamento do grid &#8212; exemplo 1</h1>	
+<p><small>Visualize esse exemplo com a ferramenta Inspetor de Grid ligada.</small></p>    
+<div id="container">
+    	<div class="box box1">Box1</div>
+    	<div class="box box2">Box2</div>
+    	<div class="box box3">Box3</div>
+    	<div class="box box4">Box4</div>
+    </div>
+<p>Defina o alinhamento do grid</p>
+<form>
+	<label><code>align-content</code>:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+     <select id="ac">
+        <option value="normal"  selected>normal</option>
+        <option value="start">start</option>
+        <option value="center">center</option>
+        <option value="end">end</option>
+        <option value="space-around">space-around</option>
+        <option value="space-between">space-between</option>
+    	<option value="space-evenly">space-evenly</option>
+	</select>
+ 	<small>eixo das linhas</small>
+	
+<br>    
+    
+    <label><code>justify-content</code>:</label>
+    <select id="jc">
+        <option value="normal"  selected>normal</option>
+        <option value="start">start</option>
+        <option value="center">center</option>
+    	<option value="end">end</option>
+    	<option value="space-between">space-between</option>
+    	<option value="space-around">space-around</option>
+    	<option value="space-evenly">space-evenly</option>
+	</select> 
+    <small>eixo das colunas</small>
+</form>
+<button type="button" id="rset">RESET</button>
+<script type="text/javascript">
+	var container = document.getElementById("container");
+	var jc = document.getElementById("jc");
+	var ac = document.getElementById("ac");
+	var rset = document.getElementById("rset");
+rset.onclick = function() {
+	jc.options[0].selected = "true";	
+	ac.options[0].selected = "true";	
+	container.style.justifyContent = "normal";
+	container.style.alignContent = "normal";
+}
+ac.onchange = function() {
+	var justifyValor = jc.value;
+	var alignValor = ac.value;
+	container.style.justifyContent = justifyValor;
+	container.style.alignContent = alignValor;
+}
+jc.onchange = function() {
+	var justifyValor = jc.value;
+	var alignValor = ac.value;
+	container.style.justifyContent = justifyValor;
+	container.style.alignContent = alignValor;
+}
+</script>
+</body>
+</html>
