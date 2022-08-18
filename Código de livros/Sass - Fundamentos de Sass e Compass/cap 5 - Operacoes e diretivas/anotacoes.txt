@@ -1,0 +1,33 @@
+SassScript possibilita que se realize operacoes que normalmente sao previstas em outras linguagens de script. As operacoes possibilitam comparacao e manipulacao de dados.
+
+###Soma e Subtracao:
+
+#permitido:
+
+10px + 4px = 14px
+10% + 4% = 14%
+2rem + 8 -4rem -1 = 5rem
+
+#nao-permitido
+
+10px + 4cm
+2rem - 1em
+
+###Divisao
+
+#Se um ou ambos os valores da divisao forem armazenados em uma variavel ou retornados por uma funcao;
+#Se um ou ambos os valores estiverem entre os parenteses e nao fizerem parte de uma lista;
+#Se um ou ambos os valores forem parte de uma expressao aritmetica;
+
+###Multiplicacao
+
+#Em aritmetica quando multiplicamos dois valores com a mesma unidade de medida de comprimento, obteremos uma medidade de area.
+
+20em * 20em = 400em^2
+20px * 20px = 400px^2
+
+###Operacoes de igualdade
+
+SaSS tem mais tipagem que javascript
+
+4 + 3 == "7" //retorna num false

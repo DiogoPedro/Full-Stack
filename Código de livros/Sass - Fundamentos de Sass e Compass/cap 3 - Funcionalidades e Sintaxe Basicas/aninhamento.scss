@@ -1,0 +1,15 @@
+//Sem SCSS
+.principal p a,
+.principal div a {
+    text-decoration: none;
+}
+
+//Com SCSS
+.principal {
+    p {
+        a { text-decoration: none; }
+    }
+    div {
+        a { text-decoration: none; }
+    }
+}

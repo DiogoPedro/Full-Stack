@@ -1,0 +1,22 @@
+.btn-padrao {
+    font: 16px;
+    padding: .2em 0.7em;
+    color: purple;
+    border-radius: 3%;
+}
+
+.btn-ok {
+    @extend .btn-padrao;
+    background-color: red;
+    color: white;
+}
+
+//Resultado de .btn-ok
+
+.btn-ok {
+    font: 16px;
+    padding: .2em 0.7em;
+    border-radius: 3%;
+    background-color: red;
+    color: white;
+}

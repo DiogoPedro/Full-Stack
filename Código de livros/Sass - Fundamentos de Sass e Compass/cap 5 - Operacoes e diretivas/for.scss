@@ -1,0 +1,13 @@
+@for $i from 1 through 4 {
+    div.box#{$i} { width: 25% * $i;}
+}
+
+//ou
+
+@for $i from 1 to 4 {
+    div.box#{$i} { width: 25% * $i;}
+}
+
+@while $i > 0 {
+    div.box#{$i} { width: 25% * $i;}
+}

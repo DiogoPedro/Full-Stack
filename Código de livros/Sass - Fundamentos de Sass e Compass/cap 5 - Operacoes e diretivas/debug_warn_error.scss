@@ -1,0 +1,37 @@
+//As mensagens sao mostradas no CLI
+
+/*@debug
+    Esta diretiva retorna o resultado de uma expressao ou de uma variavel constante de um script. A sintaxe geral eh:
+*/
+
+@mixin inset-divider-offset($offset, $padding) {
+    $divider-offset: (2 * $padding) + $offset;
+    @debug "divider offset: #{$divider-offset}";
+  
+    margin-left: $divider-offset;
+    width: calc(100% - #{$divider-offset});
+}
+
+/*@warn
+    Esta diretiva permite a escrita de um alerta no script. A sintaxe geral eh:
+*/
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+      @if not index($known-prefixes, $prefix) {
+        @warn "Unknown prefix #{$prefix}.";
+      }
+  
+      -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+}
+
+/*@error
+    Esta diretiva permite uma interrupcao caso o script identifique um erro
+*/
+@mixin reflexive-position($property, $value) {
+    @if $property != left and $property != right {
+      @error "Property #{$property} must be either left or right.";
+    }
+}

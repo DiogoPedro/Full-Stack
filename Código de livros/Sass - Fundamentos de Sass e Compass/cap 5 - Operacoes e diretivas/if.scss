@@ -1,0 +1,9 @@
+$tema: noite;
+
+@if false {
+    background-color: red;
+} @else if $tema == dia {
+    background-color: black;
+} @else {
+    background-color: purple;
+}

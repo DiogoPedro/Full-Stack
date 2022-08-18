@@ -1,0 +1,3 @@
+node-sass my-styles.scss my-styles.css compiles a single file manually.
+node-sass my-sass-folder/ -o my-css-folder/ compiles all the files in a folder manually.
+node-sass -w sass/ -o css/ compiles all the files in a folder automatically whenever the source file(s) are modified. -w adds a watch for changes to the file(s).

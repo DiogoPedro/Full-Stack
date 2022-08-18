@@ -1,0 +1,18 @@
+/**/ Comentarios
+$x para declarao de variaveis
+@charset "utf-8" para declaracaode caracteres pertecente a UTF-8
+
+tratamento de dados:
+
+10px 20px 30px 20px -> 1 lista de tamanho 4, cujo elemento eh atomico
+(10px 20px)(30px 20px) -> 1 lista de tamanho 2, cujo elemento eh uma dupla
+
+Em relacoes a cores podemos usar RGB, HSL e Hexadecimal mas o autor recomenda fortemente o uso de HSL
+
+### Interporlacao
+
+A funcionalidade SaSS denominada interpolacao permite que use valores de variaveis, de modo que eles sejam tratados como texto CSS.
+
+### Escopo local e global
+
+Se uma variavel for declarada dentro de um aninhamento, enxergar como uma funcao em C, ele cria uma variavel nela

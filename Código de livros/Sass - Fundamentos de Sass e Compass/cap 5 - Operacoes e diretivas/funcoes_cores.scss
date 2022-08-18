@@ -1,0 +1,21 @@
+//O SaSS fornece uma serie de funcoes nativas para o tratamento de cores
+
+/*Funcoes darken e lighten
+    Se destinam a alterar a luminosidade, escurecer ou clarear respectivamente uma cor.
+*/
+
+$cor: lighten(red, 20%);
+$cor2: darken(#fd90cc, 20%);
+
+/*Funcoes saturate e desaturate
+    Se destinam a alterar a saturacao de uma cor. Elas alteram o argumento S (Saturation) da sintaxe HSL
+*/
+
+$cor3: saturate(red, 20%);
+$cor4: desaturate(#fd90cc, 20%);
+
+/*Funcao adjust-hue
+    Se destina a alterar a tonalidade de uma cor
+*/
+
+$cor5: adjust-hue(red, 20%);

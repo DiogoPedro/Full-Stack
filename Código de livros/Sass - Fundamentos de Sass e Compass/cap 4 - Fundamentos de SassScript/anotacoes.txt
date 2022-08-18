@@ -1,0 +1,20 @@
+###Extends
+Eh uma forma de reutilizar o componente de interface para outro componente completamente diferente.
+
+###Partials
+
+Em linguagem Sass usamos esse termo para designar pequenos trechos de codigo, tambem chamados de snippets, que se destinam a ser importados.
+Arquivos do tipo partial devem underline na frete do nome.
+
+Ex: _reset.scss; _variaveis.scss; _utilidades.scss;
+
+Em linguagem Sass usamos a diretiva @import para importar para dentro de um arquivo SaSS.
+@import "estrutura.scss",
+
+Caso seja um partial por exemplo _repeat.scss, usamos:
+@import "repeat"
+
+###Mixins
+
+Em linguagem Sass, mixin eh um bloco escrito com sintaxe SaSS, que pode ser incluido uma ou mais vezes em um arquivo SaSS a ser compilado. 
+Por usar a sintaxe SaSS, um mixin pode conter qualquer funcionalidade da linguagem, tais como seletores, diretivas, condicionais, aninhamento, argumentos.

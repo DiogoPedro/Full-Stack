@@ -1,0 +1,21 @@
+@mixin colorir {
+    color: #fff;
+    background-color: #0ff;
+}
+
+//Exemplo de uso
+
+div {
+    width: 800px;
+    @include colorir();
+}
+
+//Mesmo conceito de javascript que permite receber argumentos vazios e substituir com valores pre-definidos.
+@mixin colorir2 ($borda, $frente:#00f) {
+    color: $borda;
+    background-color: $frente;
+}
+
+div {
+    @include colorir2(#555);
+}

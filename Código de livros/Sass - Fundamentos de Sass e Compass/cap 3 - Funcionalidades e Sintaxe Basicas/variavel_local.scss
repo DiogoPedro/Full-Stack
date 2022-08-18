@@ -1,0 +1,25 @@
+$cor_um: lime;
+$cor_dois: black;
+
+p {
+    $cor_um: red;
+    color: $cor_um;
+    background: $cor_dois;
+}
+
+div {
+    color: $cor_um;
+    background-color: $cor_dois;
+}
+
+//Resultado
+
+p {
+    color: red;
+    background: black;
+}
+
+div {
+    color: red;
+    background-color: lime;
+}
