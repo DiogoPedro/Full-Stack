@@ -1,0 +1,10 @@
+Indices do capitulos
+
+2. Criação de grid e o posicionamento dos grid itens
+3. Sintaxes pra posicionamento
+4. Dimensionamento do grid
+5. Grid itens
+6. Detalhamento de grid
+7. Desenvolvemento de Layout
+
+flex-B, informacoes sobre flexbox
